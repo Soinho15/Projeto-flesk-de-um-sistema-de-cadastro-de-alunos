@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lista de Alunos</title>
+  </head>
+  <body>
+    <h1>Alunos</h1>
+
+    <table border="1">
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Nota</th>
+      </tr>
+      
+      <tr>
+        <td>{{}}</td>
+        <td>{{ }}</td>
+        <td>{{ }}</td>
+      </tr>
+     
+    </table>
+
+    <h2>Adicionar Aluno</h2>
+    <form action="/adicionar" method="POST" > 
+      Nome: <input type="text" name="nome" required>
+      Nota:<input type="text" name="nota" required>
+       <button type="submit">Adicionar aluno</button>
+    </form>
+    
+  </body>
+</html>

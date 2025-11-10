@@ -1,33 +1,26 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Cadastro Simples</title>
-    <link rel="stylesheet" href="../static/style.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <meta charset="UTF-8">
+  <title>Lista de Alunos</title>
 </head>
 <body>
-    <div class="wrap">
-        <h1>Cadastro de Aluno</h1>
+  <h1>Lista de Alunos</h1>
+  <a href="/cadastro">Cadastrar novo aluno</a>
+  <hr>
 
-        <form action="/adicionar" method="POST" class="form">
-            <input name="nome" type="text" placeholder="Nome" required>
-            <input name="idade" type="number" placeholder="Idade" required>
-            <input name="email" type="email" placeholder="E-mail" required>
-            <button type="submit">Cadastrar</button>
-        </form>
-
-        <h2>Alunos Cadastrados ({{ alunos|length }})</h2>
-    
-            <ul class="list">
-               {%for item in alunos%}
-                <li>{{item.nome}} {{item.idade}}{{item.telefone}}</li>
-              {%endfor%}
-            </ul>
-       
-            <p>Nenhum aluno cadastrado.</p>
-            
-       
-    </div>
+  {% if alunos %}
+    <ul>
+      {% for aluno in alunos %}
+        <li>
+          {{ aluno[1] }} - {{ aluno[2] }} anos
+          | <a href="/editar/{{ aluno[0] }}">Alterar</a>
+          | <a href="/deletar/{{ aluno[0] }}" onclick="return confirm('Deseja realmente deletar?')">Deletar</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Nenhum aluno cadastrado ainda.</p>
+  {% endif %}
 </body>
 </html>
